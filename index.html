@@ -5,19 +5,21 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Quiz</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./assests/stylesheet.css">
 </head>
 <body>
+    <div id="viewHighScores">
+        <button>View Highscores</button>
+    </div>
     <div id="container">
-        <div id="start">Start</div>
+        <button id="start">Start</button>
         <div id="quiz">
             <div id="question"></div>
-            <div id="qImg"></div>
             <div id="choices">
-                <div class="choice" id="A" onclick="checkAnswer('A')"></div>
-                <div class="choice" id="B" onclick="checkAnswer('B')"></div>
-                <div class="choice" id="C" onclick="checkAnswer('C')"></div>
-                <div class="choice" id="D" onclick="checkAnswer('D')"></div>
+                <button class="choice" id="A">Option 1</button>
+                <button class="choice" id="B">Option 2</button>
+                <button class="choice" id="C">Option 3</button>
+                <button class="choice" id="D">Option 4</button>
         </div>
         <div id="timer">
             <div id="counter"></div>
@@ -28,5 +30,6 @@
      </div>
      <div id="scoreContainer" style="display: none"></div>
     </div>
+<script src="./assests/script.js"></script>
 </body>
 </html>
