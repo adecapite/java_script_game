@@ -5,7 +5,7 @@
 
 body{
     padding: 0;
-    margin 0;
+    margin: 0;
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -13,7 +13,7 @@ body{
     align-items: center;
 }
 
-.quiz{
+.container{
     width: 800px;
     max-width: 80%;
     background-color: white;
@@ -39,6 +39,28 @@ body{
     outline: none;
 }
 
-.btn:hover{
+.btn:hover 
+{
     border-color: black;
+}
+
+.startBtn:hover
+{
+    border-color: black;
+}
+.startBtn{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+   
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide{
+    display: none;
 }
