@@ -1,35 +1,25 @@
-
 <!DOCTYPE html>
-
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" type="text/css" href="./assests/stylesheet.css">
 </head>
 <body>
-    <div id="viewHighScores">
-        <button>View Highscores</button>
-    </div>
-    <div id="container">
-        <button id="start">Start</button>
-        <div id="quiz">
-            <div id="question"></div>
-            <div id="choices">
-                <button class="choice" id="A">Option 1</button>
-                <button class="choice" id="B">Option 2</button>
-                <button class="choice" id="C">Option 3</button>
-                <button class="choice" id="D">Option 4</button>
+    <div class="quiz">
+        <div id="questions" class="hide">
+        <div id="question">Question</div>
+        <div id="answerBtn" class="btn-grid">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
         </div>
-        <div id="timer">
-            <div id="counter"></div>
-            <div id="btimeGauge"></div>
-            <div id="timeGauge"></div>
-        </div>
-        <div id="progress"></div>
-     </div>
-     <div id="scoreContainer" style="display: none"></div>
     </div>
-<script src="./assests/script.js"></script>
+    <div class="controls">
+            <button id="startBtn" class="startBtn">Start</button>
+            <button id="highScore"class="highScore btn hide">High Score</button>
+        </div>
+    </div>
 </body>
 </html>
