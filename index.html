@@ -7,7 +7,12 @@
     <script defer src="assests/script.js"></script>
     <title>Quiz</title>
 </head>
+<div class="timer"><span id='timer'></span></div>
 <body>
+     <div id="instructions"
+    <p>Answer the questions as quickly as you can! But watch out, get a question wrong and you'll lose time.</p>
+    </div>
+    <!-- <div class="timer"><span id='timer'></span></div> -->
     <div class="container">
         <div id="question-container" class="hide">
         <div id="question">Question</div>
@@ -16,6 +21,13 @@
             <button class="btn">Answer 2</button>
             <button class="btn">Answer 3</button>
             <button class="btn">Answer 4</button>
+        </div>
+        <div class= "hide" id="game-over">
+            <h1>Game Over</h1>
+            <p>
+                Final Score: <span id="score"></span>
+            </p>
+            <p>Enter Initials: <input type="text" id="initials" max="3"> <button id="submit">Submit</button> </p>
         </div>
     </div>
     <div class="controls">
