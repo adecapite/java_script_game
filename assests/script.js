@@ -5,12 +5,21 @@ var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answerBtn')
 var howTo = document.getElementById('instructions')
 var gameOver = document.getElementById('game-over')
-var highScore = document.getElementById('score')
+var playerScore = document.getElementById('score')
 var initials = document.getElementById('initials')
 var timer = document.getElementById('timer')
+var score = 0
+var highScore = localStorage.getItem("highscore")
 var time = 60
+var finalScreen = document.querySelector('hide')
+var outcome = document.querySelector('#outcome')
+var submitBtn = document.getElementById(submitBtn)
+var highScoreList = document.querySelector('#playerScore')
+var highScore = JSON.parse(localStorage.getItem('playerScore')) || []
+
 
 startButton.addEventListener('click', startGame)
+
 
 function startTimer(){
     time--
@@ -67,8 +76,12 @@ function selectAnswer () {
 //  })
  if (this.value !== questions[currentQuestionIndex].answer){
     console.log ("wrong")
+    outcome.textContent = "Wrong"
+    time = time-10
 } else {
+    outcome.textContent = "Correct"
     console.log ("correct")
+    highScore = highScore+10
 }
 currentQuestionIndex++
 if (currentQuestionIndex === questions.length) {
@@ -82,7 +95,13 @@ function endGame () {
     console.log ("game over")
     gameOver.removeAttribute('class')
     questionContainerElement.setAttribute('class', 'hide')
+    document.getElementById('score').style.display = 'block'
+    // finalScreen.removeAttribute('class')
+    timer.style.display = 'none'
+    playerScore.textContent = "Score:" + highScore
+
     // need to stop timer with clear interval then set score
+
 }
 
 
@@ -101,9 +120,10 @@ function clearStatusClass(element){
     element.classList.remove('wrong')
 }
 
-function showHighScore(){
 
-}
+
+
+
 
 var questions = [
     {
