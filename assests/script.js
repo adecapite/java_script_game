@@ -8,18 +8,20 @@ var gameOver = document.getElementById('game-over')
 var playerScore = document.getElementById('score')
 var initials = document.getElementById('initials')
 var timer = document.getElementById('timer')
-var score = 0
-var highScore = localStorage.getItem("highscore")
+// var highScore = localStorage.getItem("highscore")
 var time = 60
 var finalScreen = document.querySelector('hide')
 var outcome = document.querySelector('#outcome')
-var submitBtn = document.getElementById(submitBtn)
+var submitButton = document.getElementsByClassName('submitBtn')
 var highScoreList = document.querySelector('#playerScore')
 var highScore = JSON.parse(localStorage.getItem('playerScore')) || []
 
 
 startButton.addEventListener('click', startGame)
-
+submitBtn.addEventListener('click', function(event) {
+    scoreBoard();
+    renderScoreboard();
+});
 
 function startTimer(){
     time--
@@ -81,7 +83,7 @@ function selectAnswer () {
 } else {
     outcome.textContent = "Correct"
     console.log ("correct")
-    highScore = highScore+10
+    playerScore = playerScore+10
 }
 currentQuestionIndex++
 if (currentQuestionIndex === questions.length) {
@@ -99,6 +101,7 @@ function endGame () {
     // finalScreen.removeAttribute('class')
     timer.style.display = 'none'
     playerScore.textContent = "Score:" + highScore
+    
 
     // need to stop timer with clear interval then set score
 
@@ -120,6 +123,21 @@ function clearStatusClass(element){
     element.classList.remove('wrong')
 }
 
+function scoreBoard(){
+    var finalInfo = {
+        score: playerScore.value,
+        
+};
+localStorage.setItem("playerScore", JSON.stringify(highScore));
+
+}
+
+function renderScoreboard ( ){
+    var playerScore = JSON.parse(localStorage.getItem("playerScore"));
+    playerScore.textContent = localStorage.getItem("playerScore");
+    var playerScore = document.createElement("li");
+    list.appendChild("highScore")
+}
 
 
 
@@ -134,22 +152,22 @@ var questions = [
     {
         question: 'The condition in an if/else statement is enclosed within___:',
         choices: ['Quotes', 'Curly Brackets', 'Parenthesis', 'Square Brackets'],
-        answer: 'alerts'
+        answer: 'Parenthesis'
         
     },
     {
         question: 'Arrays in JavaScript can be used to store___.:',
         choices: ['Numbers and strings', 'Other Arrays', 'Booleans', 'All Of The Above'],
-        answer: 'alerts'
+        answer: 'All Of The Above'
     },
     {
         question: 'String values must be enclosed within ___ when being assigned to variables.',
-        choices: ['strings', 'booleans', 'alerts', 'strings'],
-        answer: 'alerts'
+        choices: ['Quotes', 'Curly Brackets', 'Parenthesis', 'Square Brackets'],
+        answer: 'Square Brackets'
     },
     {
         question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
         choices: ['JavaScript', 'Terminal/Bash', 'For loops', 'console.log'],
-        answer: 'alerts'
+        answer: 'console.log'
     }
 ]
