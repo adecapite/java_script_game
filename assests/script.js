@@ -5,7 +5,7 @@ var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answerBtn')
 var howTo = document.getElementById('instructions')
 var gameOver = document.getElementById('game-over')
-var playerScore = document.getElementById('score')
+var playerScoreEl = document.getElementById('score')
 var initials = document.getElementById('initials')
 var timer = document.getElementById('timer')
 // var highScore = localStorage.getItem("highscore")
@@ -15,7 +15,8 @@ var outcome = document.querySelector('#outcome')
 var submitButton = document.getElementsByClassName('submitBtn')
 var highScoreList = document.querySelector('#playerScore')
 var highScore = JSON.parse(localStorage.getItem('playerScore')) || []
-
+var playerScore = time
+var scoreTimer;  
 
 startButton.addEventListener('click', startGame)
 submitBtn.addEventListener('click', function(event) {
@@ -33,13 +34,13 @@ function startTimer(){
 
 
 function startGame(){
-startButton.classList.add('hide')
-questionContainerElement.classList.remove('hide')
-shuffledQuestions = questions.sort(() => Math.random() - .5)
-currentQuestionIndex = 0
-setNextQuestion()
-howTo.remove()
-setInterval(startTimer, 1000)
+    startButton.classList.add('hide')
+    questionContainerElement.classList.remove('hide')
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
+    setNextQuestion()
+    howTo.remove()
+    scoreTimer = setInterval(startTimer, 1000)
 }
 
 function setNextQuestion(){
@@ -83,7 +84,7 @@ function selectAnswer () {
 } else {
     outcome.textContent = "Correct"
     console.log ("correct")
-    playerScore = playerScore+10
+    
 }
 currentQuestionIndex++
 if (currentQuestionIndex === questions.length) {
@@ -98,9 +99,9 @@ function endGame () {
     gameOver.removeAttribute('class')
     questionContainerElement.setAttribute('class', 'hide')
     document.getElementById('score').style.display = 'block'
-    // finalScreen.removeAttribute('class')
-    timer.style.display = 'none'
-    playerScore.textContent = "Score:" + highScore
+    clearInterval(scoreTimer)
+    timer.classList.add('hide')
+    playerScoreEl.textContent = "Score:"+time
     
 
     // need to stop timer with clear interval then set score
@@ -124,19 +125,21 @@ function clearStatusClass(element){
 }
 
 function scoreBoard(){
+    console.log(playerScore)
     var finalInfo = {
-        score: playerScore.value,
-        
-};
-localStorage.setItem("playerScore", JSON.stringify(highScore));
+        score: playerScoreEl.textContent,
+    }
+        console.log(finalInfo)
+
+    localStorage.setItem("playerScore", JSON.stringify(finalInfo));
 
 }
 
 function renderScoreboard ( ){
-    var playerScore = JSON.parse(localStorage.getItem("playerScore"));
-    playerScore.textContent = localStorage.getItem("playerScore");
-    var playerScore = document.createElement("li");
-    list.appendChild("highScore")
+    playerScore = JSON.parse(localStorage.getItem("playerScore"));
+    var scoresRecord = document.createElement("li")
+    scoresRecord.textContent = playerScore.score
+    document.getElementById('highScore').appendChild(scoresRecord)
 }
 
 
